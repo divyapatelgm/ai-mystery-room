@@ -26,7 +26,7 @@ export function errorHandler(err, req, res, next) {
 
   const statusCode = err.statusCode || (err.status && typeof err.status === 'number' ? err.status : 500);
   const code = err.code || 'INTERNAL_SERVER_ERROR';
-  const message = err.isPublic ? err.message : (statusCode === 500 ? 'An unexpected detective agency server error occurred.' : err.message);
+  const message = err.message || 'An unexpected detective agency server error occurred.';
 
   res.status(statusCode).json({
     success: false,
