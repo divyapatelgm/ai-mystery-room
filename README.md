@@ -504,3 +504,5 @@ $$\text{Final Score} = \max\left(0, \text{Base Points} + (\text{Discovered Clues
 
 **Built with pride by Antigravity Engineering for AI Mystery Room.**
 
+#   a i - m y s t e r y - r o o m  
+ 
