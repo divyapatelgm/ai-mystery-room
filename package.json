@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "AI-Powered Noir Mystery Investigation Game with Google Gemini & MongoDB Atlas",
   "scripts": {
+    "postinstall": "npm --prefix server install",
+    "build": "npm --prefix server install",
     "start": "cd server && npm start",
     "dev:server": "cd server && npm run dev",
     "dev:client": "cd client && npm run dev",
@@ -13,4 +15,3 @@
   "author": "Antigravity Engineering",
   "license": "MIT"
 }
-
