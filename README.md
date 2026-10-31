@@ -500,8 +500,6 @@ $$\text{Final Score} = \max\left(0, \text{Base Points} + (\text{Discovered Clues
 - [x] 18 automated tests passing for scoring, validation, and serializer security.
 - [x] Production build validated with `vite build`.
 
----
 
-**Built with pride by Antigravity Engineering for AI Mystery Room.**
 
 #
