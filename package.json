@@ -1,0 +1,15 @@
+{
+  "name": "ai-mystery-room",
+  "version": "1.0.0",
+  "description": "AI-Powered Noir Mystery Investigation Game with Google Gemini & MongoDB Atlas",
+  "scripts": {
+    "start": "cd server && npm start",
+    "dev:server": "cd server && npm run dev",
+    "dev:client": "cd client && npm run dev",
+    "build:client": "cd client && npm run build",
+    "test": "cd server && npm test"
+  },
+  "keywords": ["ai", "gemini", "mystery", "game", "noir", "detective", "full-stack"],
+  "author": "Antigravity Engineering",
+  "license": "MIT"
+}

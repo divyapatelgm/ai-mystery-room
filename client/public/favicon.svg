@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="14" fill="#101113"/>
+  <circle cx="32" cy="32" r="28" fill="#1B1D20" stroke="#C69B52" stroke-width="2"/>
+  <!-- Magnifying glass with keyhole -->
+  <circle cx="28" cy="28" r="14" fill="none" stroke="#C69B52" stroke-width="3"/>
+  <line x1="38" y1="38" x2="52" y2="52" stroke="#C69B52" stroke-width="4" stroke-linecap="round"/>
+  <!-- Keyhole in center -->
+  <circle cx="28" cy="26" r="3.5" fill="#E8E2D5"/>
+  <polygon points="26,27 30,27 31,33 25,33" fill="#E8E2D5"/>
+</svg>
