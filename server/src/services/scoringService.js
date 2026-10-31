@@ -71,3 +71,4 @@ export function calculateFinalScore({ difficulty, isCorrect, discoveredClueCount
     finalScore,
   };
 }
+

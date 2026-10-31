@@ -339,3 +339,4 @@ export default function InvestigationRoom() {
     </div>
   );
 }
+

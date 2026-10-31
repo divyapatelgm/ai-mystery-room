@@ -15,3 +15,4 @@ export async function getCaseHistory(req, res, next) {
     next(err);
   }
 }
+

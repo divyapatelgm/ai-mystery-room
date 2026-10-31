@@ -59,3 +59,4 @@ export const caseService = {
 };
 
 export default api;
+

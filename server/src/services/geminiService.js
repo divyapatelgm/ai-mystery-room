@@ -83,55 +83,72 @@ export async function generateMysteryFromGemini({ premise, difficulty = 'medium'
   }
 
   const ai = getGeminiClient();
-  const modelName = DEFAULT_GEMINI_MODEL;
+  const candidateModels = [
+    DEFAULT_GEMINI_MODEL,
+    'gemini-3.8-flash',
+    'gemini-3.5-flash',
+    'gemini-flash-latest',
+  ];
+  const modelsToTry = [...new Set(candidateModels.filter(Boolean))];
   const userPrompt = buildUserPrompt(premise, normDifficulty);
 
-  const MAX_RETRIES = 2;
   let lastError = null;
 
-  for (let attempt = 1; attempt <= MAX_RETRIES + 1; attempt++) {
-    try {
-      console.log(`[GeminiService] Generating mystery (attempt ${attempt}/${MAX_RETRIES + 1}, difficulty: ${normDifficulty})...`);
+  for (let mIdx = 0; mIdx < modelsToTry.length; mIdx++) {
+    const currentModel = modelsToTry[mIdx];
+    const MAX_RETRIES = 1; // 2 attempts per model
 
-      const response = await ai.models.generateContent({
-        model: modelName,
-        contents: [
-          { role: 'user', parts: [{ text: `${SYSTEM_PROMPT}\n\n${userPrompt}` }] }
-        ],
-        config: {
-          responseMimeType: 'application/json',
-          temperature: 0.7,
+    for (let attempt = 1; attempt <= MAX_RETRIES + 1; attempt++) {
+      try {
+        console.log(`[GeminiService] Generating mystery with model "${currentModel}" (attempt ${attempt}/${MAX_RETRIES + 1}, difficulty: ${normDifficulty})...`);
+
+        const response = await ai.models.generateContent({
+          model: currentModel,
+          contents: [
+            { role: 'user', parts: [{ text: `${SYSTEM_PROMPT}\n\n${userPrompt}` }] }
+          ],
+          config: {
+            responseMimeType: 'application/json',
+            temperature: 0.7,
+          }
+        });
+
+        const responseText = response.text;
+        if (!responseText) {
+          throw new Error('Gemini returned an empty response.');
         }
-      });
 
-      const responseText = response.text;
-      if (!responseText) {
-        throw new Error('Gemini returned an empty response.');
-      }
+        // Strip any markdown code fence wrappers if present
+        const cleanJson = responseText
+          .replace(/^```json\s*/i, '')
+          .replace(/^```\s*/i, '')
+          .replace(/```\s*$/i, '')
+          .trim();
 
-      // Strip any markdown code fence wrappers if present
-      const cleanJson = responseText
-        .replace(/^```json\s*/i, '')
-        .replace(/^```\s*/i, '')
-        .replace(/```\s*$/i, '')
-        .trim();
+        const parsed = JSON.parse(cleanJson);
+        
+        // Validate structure, item counts, unique IDs, and logical consistency
+        const validatedMystery = validateMystery(parsed, normDifficulty);
+        console.log(`[GeminiService] Mystery successfully generated and validated using "${currentModel}": "${validatedMystery.title}"`);
+        return validatedMystery;
 
-      const parsed = JSON.parse(cleanJson);
-      
-      // Validate structure, item counts, unique IDs, and logical consistency
-      const validatedMystery = validateMystery(parsed, normDifficulty);
-      console.log(`[GeminiService] Mystery successfully generated and validated: "${validatedMystery.title}"`);
-      return validatedMystery;
+      } catch (err) {
+        console.warn(`[GeminiService] Generation with "${currentModel}" (attempt ${attempt}) failed: ${err.message}`);
+        lastError = err;
 
-    } catch (err) {
-      console.warn(`[GeminiService] Generation attempt ${attempt} failed: ${err.message}`);
-      lastError = err;
-      if (attempt <= MAX_RETRIES) {
-        // Short exponential backoff before retry
-        await new Promise(r => setTimeout(r, 1000 * attempt));
+        // If high demand (503) or model unavailable (404), break immediately to the next fallback model
+        if (err.message?.includes('503') || err.message?.includes('UNAVAILABLE') || err.message?.includes('404')) {
+          console.warn(`[GeminiService] Model "${currentModel}" unavailable or overloaded. Trying fallback model...`);
+          break;
+        }
+
+        if (attempt <= MAX_RETRIES) {
+          await new Promise(r => setTimeout(r, 1000 * attempt));
+        }
       }
     }
   }
 
-  throw new Error(`Mystery generation failed after ${MAX_RETRIES + 1} attempts: ${lastError?.message}`);
+  throw new Error(`Mystery generation failed across models: ${lastError?.message}`);
 }
+

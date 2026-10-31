@@ -171,3 +171,4 @@ export function validateMystery(data, requestedDifficulty = 'medium') {
     })),
   };
 }
+

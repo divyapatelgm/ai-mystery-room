@@ -114,3 +114,4 @@ export default function SuspectAvatar({ name, gender, avatarIndex = 0, className
     </div>
   );
 }
+

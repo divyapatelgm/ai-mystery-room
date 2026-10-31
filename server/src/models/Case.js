@@ -113,3 +113,4 @@ const CaseSchema = new mongoose.Schema({
 CaseSchema.index({ ownerId: 1, createdAt: -1 });
 
 export const Case = mongoose.model('Case', CaseSchema);
+

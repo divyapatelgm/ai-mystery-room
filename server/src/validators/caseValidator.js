@@ -8,3 +8,4 @@ export const CreateCaseSchema = z.object({
 export const AccusationSchema = z.object({
   suspectId: z.string().min(1, 'A suspect must be chosen for the accusation.'),
 });
+

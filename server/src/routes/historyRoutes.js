@@ -9,3 +9,4 @@ router.use(standardLimiter);
 router.get('/', getCaseHistory);
 
 export default router;
+

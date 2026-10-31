@@ -699,7 +699,7 @@ Health check endpoint reporting server uptime, database state, and environment c
 ## 15. Gemini Integration & Structured Schema
 
 ### 15.1 Official SDK Usage
-Integration uses `@google/genai` on the Node.js backend. Model name is dynamically pulled from `process.env.GEMINI_MODEL || "gemini-2.5-flash"`.
+Integration uses `@google/genai` on the Node.js backend. Model name is dynamically pulled from `process.env.GEMINI_MODEL || "gemini-3.8-flash"`.
 
 ### 15.2 Prompt Strategy
 System instruction enforces the persona of a master Agatha Christie / Raymond Chandler mystery architect. Gemini is strictly instructed to return raw JSON conforming to the target schema with no conversational markdown wrappers (` ```json `).
@@ -884,3 +884,4 @@ Automated backend test suite powered by Node's native test runner / Jest / Super
 
 1. **Browser Cookie Clear:** If a player clears their browser cookies or switches browsers, their guest session UUID will reset, archiving previous cases under the orphaned ID unless authenticated accounts are introduced.
 2. **AI Latency:** High load on Google's Gemini API endpoints may occasionally cause generation to take 8–15 seconds; mitigated via the animated loading dossier with rotating contextual messages.
+

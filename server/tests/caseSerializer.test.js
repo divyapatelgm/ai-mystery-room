@@ -125,3 +125,4 @@ describe('Case Serializer (Information Barrier Security)', () => {
     assert.equal(historyList[0].isCorrect, null);
   });
 });
+

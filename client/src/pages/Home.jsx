@@ -43,7 +43,7 @@ export default function Home() {
           {/* AI Badge Indicator */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-noir-900 border border-gold/30 text-xs font-mono text-gold shadow-sm">
             <Sparkles className="w-3.5 h-3.5 text-gold animate-pulse" />
-            <span>POWERED BY GOOGLE GEMINI 2.5 • DETERMINISTIC NOIR ENGINE</span>
+            <span>POWERED BY GOOGLE GEMINI 3.8 • DETERMINISTIC NOIR ENGINE</span>
           </div>
 
           {/* Cinematic Serif Heading */}
@@ -223,3 +223,4 @@ export default function Home() {
     </div>
   );
 }
+

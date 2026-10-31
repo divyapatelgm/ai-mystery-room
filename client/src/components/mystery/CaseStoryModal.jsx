@@ -52,3 +52,4 @@ export default function CaseStoryModal({ isOpen, onClose, caseData }) {
     </Modal>
   );
 }
+

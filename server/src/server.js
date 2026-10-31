@@ -20,9 +20,10 @@ async function startServer() {
     console.log(`  🕵️  AI MYSTERY ROOM — BACKEND SERVER`);
     console.log(`  Running on port: http://localhost:${PORT}`);
     console.log(`  Environment:     ${process.env.NODE_ENV || 'development'}`);
-    console.log(`  Gemini Model:    ${process.env.GEMINI_MODEL || 'gemini-2.5-flash'}`);
+    console.log(`  Gemini Model:    ${process.env.GEMINI_MODEL || 'gemini-3.8-flash'}`);
     console.log(`===============================================`);
   });
 }
 
 startServer();
+

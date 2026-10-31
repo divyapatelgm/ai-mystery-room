@@ -4,7 +4,7 @@
 
 [![Node.js Version](https://img.shields.io/badge/Node.js-%3E%3D18.0.0-687D60?style=flat&logo=node.js)](https://nodejs.org/)
 [![React](https://img.shields.io/badge/React-18.3-61DAFB?style=flat&logo=react)](https://react.dev/)
-[![Gemini API](https://img.shields.io/badge/Gemini_API-2.5_Flash-C69B52?style=flat&logo=google)](https://ai.google.dev/)
+[![Gemini API](https://img.shields.io/badge/Gemini_API-3.8_Flash-C69B52?style=flat&logo=google)](https://ai.google.dev/)
 [![MongoDB Atlas](https://img.shields.io/badge/MongoDB-Atlas_7.0-47A248?style=flat&logo=mongodb)](https://www.mongodb.com/atlas)
 [![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-Noir_Theme-38B2AC?style=flat&logo=tailwindcss)](https://tailwindcss.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-C69B52.svg)](LICENSE)
@@ -235,7 +235,7 @@ MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/ai_mystery_
 
 # Google Gemini API Key
 GEMINI_API_KEY=your_gemini_api_key_here
-GEMINI_MODEL=gemini-2.5-flash
+GEMINI_MODEL=gemini-3.8-flash
 
 # Signed Cookie Secret (HMAC)
 SESSION_SECRET=noir_detective_case_secret_key_change_in_production
@@ -469,7 +469,7 @@ $$\text{Final Score} = \max\left(0, \text{Base Points} + (\text{Discovered Clues
    - `PORT=5000`
    - `MONGODB_URI=<your_mongodb_atlas_uri>`
    - `GEMINI_API_KEY=<your_google_gemini_api_key>`
-   - `GEMINI_MODEL=gemini-2.5-flash`
+   - `GEMINI_MODEL=gemini-3.8-flash`
    - `SESSION_SECRET=<random_secure_hex_secret>`
    - `CLIENT_URL=https://<your_vercel_app_domain>.vercel.app`
 5. Deploy and note your backend URL: `https://<service-name>.onrender.com`.
@@ -503,3 +503,4 @@ $$\text{Final Score} = \max\left(0, \text{Base Points} + (\text{Discovered Clues
 ---
 
 **Built with pride by Antigravity Engineering for AI Mystery Room.**
+

@@ -24,3 +24,4 @@ export function guestAuthMiddleware(req, res, next) {
   req.guestId = guestId;
   next();
 }
+
