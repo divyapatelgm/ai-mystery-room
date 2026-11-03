@@ -1,8 +1,14 @@
 import axios from 'axios';
 
+// In production, communicate directly with the Render backend to avoid Vercel's 10s edge proxy timeout on AI generation
+const defaultBaseURL = typeof window !== 'undefined' && !window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1')
+  ? 'https://ai-mystery-room-ijb4.onrender.com/api'
+  : '/api';
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || '/api',
+  baseURL: import.meta.env.VITE_API_URL || defaultBaseURL,
   withCredentials: true,
+  timeout: 90000, // 90 seconds timeout for AI mystery generation
   headers: {
     'Content-Type': 'application/json',
   },
