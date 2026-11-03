@@ -7,8 +7,6 @@
 [![Gemini API](https://img.shields.io/badge/Gemini_API-3.8_Flash-C69B52?style=flat&logo=google)](https://ai.google.dev/)
 [![MongoDB Atlas](https://img.shields.io/badge/MongoDB-Atlas_7.0-47A248?style=flat&logo=mongodb)](https://www.mongodb.com/atlas)
 [![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-Noir_Theme-38B2AC?style=flat&logo=tailwindcss)](https://tailwindcss.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-C69B52.svg)](LICENSE)
-
 ---
 
 ## 📖 Table of Contents
