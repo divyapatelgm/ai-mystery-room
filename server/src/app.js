@@ -10,6 +10,9 @@ import historyRoutes from './routes/historyRoutes.js';
 
 const app = express();
 
+// Trust reverse proxy (Render / PaaS)
+app.set('trust proxy', 1);
+
 // Security HTTP headers
 app.use(helmet({
   crossOriginResourcePolicy: { policy: 'cross-origin' },
@@ -66,6 +69,9 @@ app.get('/api/health', (req, res) => {
     status: 'healthy',
     timestamp: new Date().toISOString(),
     service: 'AI Mystery Room Backend',
+    version: '1.0.2',
+    commit: process.env.RENDER_GIT_COMMIT || 'latest',
+    model: process.env.GEMINI_MODEL || 'gemini-3.8-flash',
     database: dbStatusMap[dbState] || 'unknown',
     guestId: req.guestId ? 'active' : 'unassigned',
   });
@@ -90,4 +96,3 @@ app.use('*', (req, res) => {
 app.use(errorHandler);
 
 export default app;
-
